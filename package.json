@@ -23,7 +23,7 @@
     "postcss-cli": "^9.1.0",
     "postcss-loader": "^7.0.0",
     "pug": "^3.0.2",
-    "pug-cli": "^1.0.0-alpha6",
+    "pug-cli": "github:pugjs/pug-cli#master",
     "sass": "^1.52.3",
     "sass-loader": "^13.0.0",
     "webpack": "^5.73.0",
