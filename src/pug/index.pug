@@ -1,13 +1,18 @@
-doctype html
-html(lang="ja")
-  head
-    meta(charset="UTF-8")
-    title Page Title
-    script(src="./js/index.js")
-    link(rel="stylesheet" href="./css/style.css")
-  body
-    header.l-header
-      h1.l-header__logo Logo
-    main.l-main
-      h2 main
-      p pug
+extends _layout.pug
+
+block vars
+    include _config.pug
+    - var key = "top"
+    -
+        var page = {
+            url: 'index.html',
+            name: 'トップページ',
+            title: 'トップページ',
+            description: 'トップページです',
+        }
+
+block contents
+    h2 page.title
+    .keyvisual_container
+        p.keyvisual_image
+            img(src=image_path + "/top/top_keyvisual.jpg", alt="")
