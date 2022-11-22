@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "webpack --mode development",
+    "start": "npm run watch",
     "watch": "npm-run-all -p watch:serve watch:pug",
     "build": "npm-run-all -p build:webpack build:pug",
     "build:webpack": "webpack --mode production",

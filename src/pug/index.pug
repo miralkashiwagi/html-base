@@ -6,11 +6,16 @@ block vars
     -
         var page = {
             url: 'index.html',
-            name: 'トップページ',
             title: 'トップページ',
             description: 'トップページです',
         }
 
+block kv
+    +breadcrumb([
+        "test02", "テキスト", [
+            "test03", "テキスト"
+        ]
+    ])
 block contents
     h2 page.title
     .keyvisual_container

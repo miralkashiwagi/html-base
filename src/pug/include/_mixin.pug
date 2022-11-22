@@ -1,0 +1,23 @@
+//- Yoast SEO　形式
+mixin breadcrumb(data)
+    .c-breadcrumb
+        .c-breadcrumb__inner
+            span
+                span
+                    //- TOPページURLと表記は全ページ固定
+                    a(href="/") ホーム
+                    | &gt;
+                    +breadcrumb-item(data)
+
+mixin breadcrumb-item(data)
+    span
+        if data[2]
+            //- 子があるとき
+            a(href=data[0]) #{data[1]}
+            | &gt;
+            +breadcrumb-item(data[2])
+        else
+            //- 子がないとき
+            a(href=data[0]) #{data[1]}
+            | &gt;
+            span.breadcrumb_last(aria-current='page') #{page.title}
