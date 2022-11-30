@@ -9,15 +9,23 @@ mixin breadcrumb(data)
                     | &gt;
                     +breadcrumb-item(data)
 
-mixin breadcrumb-item(data)
+mixin breadcrumb-item(data,path)
+    //- 親の階層のパスを入れられるようにする
+    //- パスが渡されなければ '/' にする
+    -
+        path = path || '/'
+        if(data[0]) {
+            currentpath = path + data[0] + "/"
+        }
+
     span
         if data[2]
             //- 子があるとき
-            a(href=data[0]) #{data[1]}
+            a(href=currentpath) #{data[1]}
             | &gt;
-            +breadcrumb-item(data[2])
+            +breadcrumb-item(data[2],currentpath)
         else
             //- 子がないとき
-            a(href=data[0]) #{data[1]}
+            a(href=currentpath) #{data[1]}
             | &gt;
             span.breadcrumb_last(aria-current='page') #{page.title}
