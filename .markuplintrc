@@ -43,5 +43,14 @@
         "required-attr": false
       }
     }
+  ],
+  "childNodeRules": [
+    {
+      "selector": "svg",
+      "inheritance": true,
+      "rules": {
+        "invalid-attr": false
+      }
+    }
   ]
 }
