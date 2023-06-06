@@ -1,13 +1,21 @@
 @use "../foundation" as *;
 
-html,
+:root{
+  --spacing:0;
+  --header-offset:60px;
+}
+*{
+  letter-spacing: var(--spacing);
+}
+
 body {
   -webkit-text-size-adjust:100%;
-  background: $color-back;
+  background: $color-white;
 
   color: $color-text;
   font-size: $fs-default;
   font-family: $ff-default;
+  line-height: $base-lh;
   text-rendering: optimizeLegibility;
 }
 
@@ -22,8 +30,6 @@ a {
 
 main {
   display: block;
-  min-width: 375px; // viewport-extra検証用のため、仮追加
-  height: 200vh; // スクロールするため、仮追加
 }
 
 [data-whatinput='mouse'] *:focus,
@@ -35,7 +41,8 @@ main {
 img{
   height:auto;
   max-width:100%;
-  vertical-align:bottom
+  vertical-align:bottom;
+  object-fit: cover;
 }
 table{
   border-collapse:collapse;
@@ -46,21 +53,33 @@ td,th{
   border:1px solid #ccc;
   vertical-align:top
 }
-input,textarea{
-  background-color:#fff;
-  border:1px solid #a7a6aa;
-  border-radius:2px;
-  margin:0;
-  padding:5px 7px
+//input,textarea{
+//  background-color:#fff;
+//  border:1px solid #a7a6aa;
+//  border-radius:2px;
+//  margin:0;
+//  padding:5px 7px
+//}
+//input[type=text],textarea{
+//  border:1px solid #aaa;
+//  outline:none;
+//  -webkit-transition:all .3s ease;
+//  transition:all .3s ease
+//}
+//input[type=text]:focus,textarea:focus{
+//  border:1px solid #52a8ec;
+//  -webkit-box-shadow:0 0 7px #52a8ec;
+//  box-shadow:0 0 7px #52a8ec
+//}
+
+/* chrome opera */
+@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: .001dpcm) {
+  body {
+    image-rendering: -webkit-optimize-contrast;
+  }
 }
-input[type=text],textarea{
-  border:1px solid #aaa;
-  outline:none;
-  -webkit-transition:all .3s ease;
-  transition:all .3s ease
+
+:focus-within{
+  outline-color: $color-primary;
 }
-input[type=text]:focus,textarea:focus{
-  border:1px solid #52a8ec;
-  -webkit-box-shadow:0 0 7px #52a8ec;
-  box-shadow:0 0 7px #52a8ec
-}
+:target { scroll-margin-top: var(--header-offset); }

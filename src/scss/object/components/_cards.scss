@@ -1,0 +1,16 @@
+@use "../../foundation" as *;
+
+.c-cards{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: rem(16);
+
+  img{
+    border-radius: rem(20);
+    width: 100%;
+  }
+
+  @include mq(tb){
+    grid-template-columns: 1fr;
+  }
+}

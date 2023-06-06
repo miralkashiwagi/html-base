@@ -1,15 +1,23 @@
 
 // Base Setting
-$color-primary: #07308d;
-$color-secondary: #e5c20d;
-$color-black: #222;
+$color-primary: #014f71;
+$color-primary-light: #8dbed3;
+$color-secondary: #F29600;
+$color-secondary-light: #FCD68C;
+
+$color-black: #000;
 $color-white: #fff;
 
 // Naming for Use
-$color-back: $color-white;
+//$color-back: #DEDEDE;
 $color-text: $color-black;
+$color-line: #C9CACA;
 
 
 // font
-$fs-default: 1rem;
-$ff-default: sans-serif;
+$base-fs: 16;
+$base-lh: 1.75;
+$fs-default: 0.875rem;//12px
+$ff-default: 'Noto Sans JP', sans-serif;
+//$ff-en: 'Josefin Sans', sans-serif;
+//$ff-mix: 'Josefin Sans','Noto Sans JP', sans-serif;

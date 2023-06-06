@@ -1,18 +1,94 @@
+@use "../../foundation" as *;
 
-.c-cta{
-  background-color:#fff;
-  padding-bottom:80px;
-  position:relative;
-  z-index:10
-}
-.c-cta:before{
-  background:url("../img/common/bg_gradation.jpg") no-repeat 50%;
-  background-size:cover;
-  bottom:0;
-  content:"";
-  height:75%;
-  left:0;
-  position:absolute;
-  width:100%;
-  z-index:-1
+.c-cta {
+  background: $color-primary;
+  font-weight: 900;
+  color: $color-white;
+  padding: rem(20);
+  line-height: 1.3;
+  display: block;
+
+  &__inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: rem(20);
+  }
+
+  &__title {
+    background: #FFF100;
+    color: $color-black;
+    width: rem(75);
+    height: rem(75);
+    border-radius: rem(75);
+    display: grid;
+    place-content: center;
+    font-weight: bold;
+  }
+
+  &__label {
+    background: $color-white;
+    font-size: rem(24);
+    color: #E60012;
+    display: grid;
+    place-content: center;
+    padding: rem(6) rem(28);
+    border-radius: rem(8);
+  }
+
+  &__tel {
+    font-size: rem(34);
+
+    small {
+      display: block;
+      font-size: rem(20);
+      font-weight: 500;
+    }
+  }
+
+  @include mq(tb,min){
+    &__tel{
+      pointer-events: none;
+    }
+  }
+
+  @include mq(tb) {
+    position: fixed;
+    padding: rem(8);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    &__inner {
+      gap: rem(6);
+    }
+
+    &__title {
+      width: rem(50);
+      height: rem(50);
+      font-size: rem(10);
+    }
+    &__label {
+      font-size: rem(10);
+      padding: rem(6) rem(8);
+    }
+    &__tel {
+      font-size: rem(15);
+
+      small {
+        font-size: rem(8);
+        font-weight: normal;
+      }
+    }
+  }
+
+
+  &--inmiddle{
+    margin: rem(60) 0 rem(60) rem(40);
+    border-radius: rem(20);
+    @include mq(tb) {
+      display: none;
+    }
+  }
 }

@@ -1,0 +1,8 @@
+@use "../foundation" as *;
+
+.l-wrapper{
+
+  @include mq(md){
+    display: block;
+  }
+}

@@ -1,0 +1,14 @@
+@use "../../foundation" as *;
+
+
+[data-scroll="fadeinup"]{
+  &.is-init{
+    opacity: 0;
+    transform: translateY(rem(80));
+    transition: opacity 0.4s, transform 0.3s;
+  }
+  &.is-showing{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,13 +1,159 @@
 @use "../foundation" as *;
 
 .l-header {
-  background: $color-back;
-  margin: 0 auto;
-  border-bottom: solid 1px #ccc;
-  padding: 20px;
-  display: none;
+  background: $color-white;
+  border-bottom: solid 2px $color-primary;
+  padding: rem(10) rem(16) rem(14);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  font-weight: 700;
+
+  &__sp_button{
+    display: none;
+  }
+  a{
+    display: block;
+  }
+  &__inner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: rem(1180);
+    margin: auto;
+  }
 
   &__logo{
-    font-size: 3rem;
+    width: min(rem(200),16.5vw);
+  }
+  &__nav{
+    display: flex;
+    align-items: center;
+  }
+  &__nav_menu{
+    display: flex;
+    align-items: center;
+    li{
+      margin-left: rem(10);
+      font-size: clamp(rem(12),1.2vw,rem(14));
+    }
+
+    a{
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding-right: rem(14);
+      &::before{
+        content: "";
+        width: rem(4);
+        height: rem(14);
+        display: inline-block;
+        margin-right: rem(6);
+        background: $color-primary;
+        border-radius: rem(4);
+      }
+    }
+  }
+  &__mypage{
+    background: $color-primary url("../img/icon-mypage.svg") no-repeat rem(8) center;
+    background-size: rem(18);
+    color: $color-white;
+    border-radius: rem(2);
+    margin-left: rem(10);
+    padding: rem(10) rem(10) rem(10) rem(34);
+    line-height: 1;
+  }
+}
+
+@include mq(md){
+  .l-header{
+    padding: rem(8) rem(16);
+    &__inner{
+      padding-right: rem(70);
+    }
+    &__logo{
+      width: rem(120);
+      img{
+        object-fit: contain;
+      }
+    }
+    &__nav_menu{
+      background: $color-white;
+      display: none;
+      transform: scaleY(0);
+      padding-bottom: rem(20);
+      border-bottom: solid 2px $color-primary;
+      transform-origin: top center;
+      &.is-open{
+        display: block;
+        position: absolute;
+        top: rem(50);
+        left: 0;
+        right: 0;
+        animation: slideInDown 0.1s forwards;
+      }
+
+      li{
+        font-size: rem(16);
+        margin: 0;
+      }
+      a{
+        padding: rem(8) rem(16);
+      }
+    }
+
+
+
+
+
+    &__sp_button{
+      background: transparent;
+      border: none;
+      display: block;
+      width: rem(44);
+      height: rem(44);
+      position: fixed;
+      z-index: 100;
+      top: rem(3);
+      right: rem(10);
+
+      .line{
+        background: $color-primary;
+        height: rem(3);
+        display: block;
+        position: absolute;
+        left: rem(10);
+        width: rem(24);
+        transition: transform .3s, opacity .2s, top .2s;
+
+        &:nth-child(1){
+          top: rem(10);
+        }
+        &:nth-child(2){
+          top: rem(20);
+          opacity: 1;
+        }
+        &:nth-child(3){
+          bottom: rem(11);
+        }
+      }
+
+      &.is-open{
+        .line{
+          &:nth-child(1){
+            top: rem(20);
+            transform: rotate(45deg);
+          }
+          &:nth-child(2){
+            opacity: 0;
+          }
+          &:nth-child(3){
+            top: rem(20);
+            transform: rotate(-45deg);
+          }
+        }
+      }
+    }
   }
 }

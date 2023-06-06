@@ -33,5 +33,9 @@
     "webpack-dev-server": "^4.9.2",
     "webpack-remove-empty-scripts": "^0.8.1"
   },
-  "private": true
+  "private": true,
+  "dependencies": {
+    "simple-scroll-trigger": "^3.0.1",
+    "smooth-scroll": "^16.1.3"
+  }
 }

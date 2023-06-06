@@ -1,3 +1,4 @@
+@use "../../foundation" as *;
 
 .u-block_center{
   display:block;
@@ -12,4 +13,10 @@
 }
 .u-right{
   text-align:right
+}
+.u-vertical-md{
+  @include mq(md) {
+    writing-mode: vertical-lr;
+    line-height: 1.2;
+  }
 }

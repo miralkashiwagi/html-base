@@ -1,0 +1,71 @@
+@use "../../foundation" as *;
+
+.p-index_mv {
+  --spacing:0.05em;
+  position: relative;
+  &__bg{
+    img{
+      width: 100%;
+      height: rem(300);
+    }
+  }
+  &__inner{
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    padding-bottom: rem(60);
+  }
+  &__title{
+    font-weight: 700;
+    font-size: rem(23);
+    color: $color-primary;
+    background: $color-white;
+    width: fit-content;
+    line-height: 1.4;
+    padding: rem(10) rem(24);
+    position: relative;
+    margin: auto;
+  }
+  &__image_wrap{
+    position: absolute;
+    inset: 0;
+    .c-container{
+      height: 100%;
+      position: relative;
+    }
+    img{
+      position: absolute;
+      right: rem(100);
+      top: rem(30);
+    }
+  }
+
+  @include mq(){
+    &__title{
+      z-index: 1;
+    }
+    &__image_wrap{
+      img{
+        width: rem(120);
+        top: auto;
+        right: 0;
+        bottom: 0;
+      }
+    }
+  }
+  @include mq(sm){
+    &__bg{
+      img{
+        width: 100%;
+        height: rem(300);
+      }
+    }
+    &__inner{
+      padding-bottom: rem(30);
+    }
+    &__title{
+      font-size: rem(18);
+    }
+  }
+}

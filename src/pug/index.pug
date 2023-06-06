@@ -1,23 +1,31 @@
 extends _layout.pug
 
 block vars
-    include _config.pug
-    - var key = "top"
     -
         var page = {
-            url: 'index.html',
-            title: 'トップページ',
-            description: 'トップページです',
+            dir: './',
+            url: '',
+            key: 'top',
+            title: 'サイトタイトル',
+            description: '説明文',
         }
 
-block kv
-    +breadcrumb([
-        "test02", "テキスト", [
-            "test03", "テキスト"
-        ]
-    ])
+    include _config.pug
+
 block contents
-    h2 page.title
-    .keyvisual_container
-        p.keyvisual_image
-            img(src=image_path + "/top/top_keyvisual.jpg", alt="")
+    main.l-main
+        .p-index_mv
+            .p-index_mv__bg
+                picture
+                    source(srcset=image_path+"/bg-mv-sp.jpg" media="(max-width: 768px)" width="1200" height="1200")
+                    img(src=image_path+"/bg-mv.jpg" alt="" width="1200" height="300" decoding="async")
+            .p-index_mv__inner
+                .c-container
+                    p.p-index_mv__title
+                        |素敵なキャッチコピー
+
+        .c-container
+            section.l-section.p-index_about_section#about(data-scroll="fadeinup")
+                .l-section__intro
+                    h2.c-heading_01 見出し
+

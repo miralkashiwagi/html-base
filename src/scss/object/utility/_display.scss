@@ -1,22 +1,15 @@
+@use "../../foundation" as *;
 
-.u-none{
-  display:none
-}
-.u-ib{
-  display:inline-block
-}
 .u-disable{
   pointer-events:none
 }
-.u-disable{
-  pointer-events:none
+.u-hidden-lg{
+  @include mq(md,min){
+    display: none!important;
+  }
 }
-.u-visible{
-  display:block
-}
-.u-hidden{
-  display:none
-}
-.u-hidden-max,.u-hidden-md,.u-hidden-min,.u-hidden-sp,.u-hidden-spmin,.u-hidden-tab{
-  display:none!important
+.u-hidden-md{
+  @include mq(md){
+    display: none!important;
+  }
 }

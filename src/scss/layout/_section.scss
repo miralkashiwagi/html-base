@@ -1,0 +1,7 @@
+@use "../foundation" as *;
+
+.l-section{
+
+  @include mq(tb){
+  }
+}

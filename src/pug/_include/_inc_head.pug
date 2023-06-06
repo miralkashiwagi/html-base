@@ -1,0 +1,27 @@
+meta(charset="utf-8")
+meta(http-equiv="X-UA-Compatible", content="IE=edge")
+meta(name="viewport", content="width=device-width, initial-scale=1.0")
+meta(name="format-detection", content="telephone=no")
+
+title #{(page.key=="top" ? sitename: page.title +' | '+ sitename) }
+
+meta(content=page.description, name="description")
+meta(content=page.keywords, name="keywords")
+meta(content=page.title, property="og:title")
+meta(content=page.description, property="og:description")
+meta(content=domain + ogp, property="og:image")
+meta(content=domain + page.url, property="og:url")
+meta(content=(page.key == "top" ? "website" : "article"), property="og:type")
+meta(content="ja_JP", property="og:locale")
+link(rel="icon" href=image_path + "/favicon.ico" sizes="any")
+link(rel="apple-touch-icon" href=image_path + "/webclip.png")
+
+
+link(rel='preconnect' href='https://fonts.googleapis.com')
+link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin='')
+link(href='https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Sawarabi+Mincho&display=swap' rel="preload" as="style")
+link(href='https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Sawarabi+Mincho&display=swap' rel='stylesheet' media="print" onload="this.media='all'")
+
+
+//- link(rel="stylesheet", href=css_path+"/scripts.css")
+link(rel="stylesheet", href=css_path+"/style.css")
