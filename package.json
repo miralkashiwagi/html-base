@@ -1,12 +1,11 @@
 {
   "scripts": {
     "start": "npm run watch",
-    "watch": "npm-run-all -p watch:serve watch:pug",
+    "watch": "npm-run-all -p watch:serve",
     "build": "npm-run-all -p build:webpack build:pug",
     "build:webpack": "webpack --mode production",
     "watch:serve": "webpack serve --mode development",
     "build:pug": "pug src/pug/ --hierarchy -o dist/ -P",
-    "watch:pug": "pug src/pug/ --hierarchy -o dist/ -P -w",
     "test": "markuplint \"./dist/**/*.html\""
   },
   "devDependencies": {

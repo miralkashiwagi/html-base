@@ -3,6 +3,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const CopyPlugin = require("copy-webpack-plugin");
+const pug = require("pug");
 
 module.exports = (env, argv) => {
 
@@ -101,8 +102,44 @@ module.exports = (env, argv) => {
             watchFiles: [
                 'src/**/*.js',
                 'src/**/*.scss',
-                'public/**/*'
+                'public/**/*',
+                'src/**/*.pug'
             ],
+
+            onBeforeSetupMiddleware: function(devServer) {
+                if (!devServer) {
+                    throw new Error('webpack-dev-server is not defined');
+                }
+
+                const pug = require('pug');
+
+
+                devServer.app.get('/*', function(req, res, next) {
+                    const originalUrl = req.originalUrl;
+                    if (originalUrl.endsWith('/') || originalUrl.endsWith('.html')) {
+                        let targetFile;
+
+                        // If the originalUrl ends with '/', it means we need to find index.pug in the corresponding directory
+                        if (originalUrl.endsWith('/')) {
+                            const trimmedUrl = originalUrl.replace(/^\/|\/$/g, ''); // remove leading and trailing slashes
+                            targetFile = `./src/pug/${trimmedUrl}/index.pug`;
+
+                        } else {
+                            // If the requested file ends with .html, remove .html and replace with .pug
+                            const requestWithoutHtml = originalUrl.replace(/.html$/g, '');
+                            const trimmedRequest = requestWithoutHtml.replace(/^\/|\/$/g, ''); // remove leading and trailing slashes
+                            targetFile = `./src/pug/${trimmedRequest}.pug`;
+                        }
+
+                        const html = pug.renderFile(targetFile);
+                        res.send(html);
+
+                    } else {
+                        // If the originalUrl does not end with '/' or .html, proceed with the next middleware
+                        next();
+                    }
+                });
+            },
         },
 
     }
