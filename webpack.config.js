@@ -96,17 +96,18 @@ module.exports = (env, argv) => {
             // poll: 1000, //毎秒変更を確認します
         },
         devServer: {
+            port: 3100,
+            open: true,
             static: {
                 directory: path.join(__dirname, 'dist'),
             },
             watchFiles: [
                 'src/**/*.js',
                 'src/**/*.scss',
-                'public/**/*',
                 'src/**/*.pug'
             ],
 
-            onBeforeSetupMiddleware: function(devServer) {
+            setupMiddlewares: function(middlewares,devServer) {
                 if (!devServer) {
                     throw new Error('webpack-dev-server is not defined');
                 }
@@ -122,15 +123,16 @@ module.exports = (env, argv) => {
                         // If the originalUrl ends with '/', it means we need to find index.pug in the corresponding directory
                         if (originalUrl.endsWith('/')) {
                             const trimmedUrl = originalUrl.replace(/^\/|\/$/g, ''); // remove leading and trailing slashes
-                            targetFile = `./src/pug/${trimmedUrl}/index.pug`;
+                            targetFile = path.join('./src/pug', trimmedUrl, 'index.pug');
 
                         } else {
                             // If the requested file ends with .html, remove .html and replace with .pug
                             const requestWithoutHtml = originalUrl.replace(/.html$/g, '');
                             const trimmedRequest = requestWithoutHtml.replace(/^\/|\/$/g, ''); // remove leading and trailing slashes
-                            targetFile = `./src/pug/${trimmedRequest}.pug`;
+                            targetFile = path.join('./src/pug', `${trimmedRequest}.pug`);
                         }
 
+                        console.log(`compiling ${targetFile}`)
                         const html = pug.renderFile(targetFile);
                         res.send(html);
 
@@ -139,6 +141,8 @@ module.exports = (env, argv) => {
                         next();
                     }
                 });
+
+                return middlewares;
             },
         },
 
